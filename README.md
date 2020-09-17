@@ -1,3 +1,7 @@
+# modified densenet for 2020 "hwawei cup" national postgraduate mathematical contest challenge E
+
+change the number of densenet layer and the final fc layer to mlp layer 
+
 # efficient_densenet_pytorch
 A PyTorch >=1.0 implementation of DenseNets, optimized to save GPU memory.
 
