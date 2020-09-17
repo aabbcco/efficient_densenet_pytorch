@@ -1,4 +1,4 @@
-# modified densenet for 2020 "hwawei cup" national postgraduate mathematical contest challenge E
+# Modified densenet for 2020 "hwawei cup" national postgraduate mathematical contest challenge E
 
 change the number of densenet layer and the final fc layer to mlp layer 
 
