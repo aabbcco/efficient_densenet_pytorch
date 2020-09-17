@@ -44,7 +44,7 @@ def train_epoch(model, loader, optimizer, epoch, n_epochs, print_freq=1):
 
         # compute output
         output = model(input)
-        loss = torch.nn.functional.cross_entropy(output, target)
+        loss = (output-target)*(output-target)+abs(output-target)
 
         # measure accuracy and record loss
         batch_size = target.size(0)
@@ -94,7 +94,7 @@ def test_epoch(model, loader, print_freq=1, is_test=True):
 
             # compute output
             output = model(input)
-            loss = torch.nn.functional.cross_entropy(output, target)
+            loss = (output-target)*(output-target)+abs(output-target)
 
             # measure accuracy and record loss
             batch_size = target.size(0)
@@ -121,7 +121,7 @@ def test_epoch(model, loader, print_freq=1, is_test=True):
     return batch_time.avg, losses.avg, error.avg
 
 
-def train(model, train_set, valid_set, test_set, save, n_epochs=300,
+def train(model, train_set, valid_set, test_set, save, n_epochs=100,
           batch_size=64, lr=0.1, wd=0.0001, momentum=0.9, seed=None):
     if seed is not None:
         torch.manual_seed(seed)
@@ -205,7 +205,7 @@ def train(model, train_set, valid_set, test_set, save, n_epochs=300,
     print('Final test error: %.4f' % test_error)
 
 
-def demo(data, save, depth=100, growth_rate=12, efficient=True, valid_size=5000,
+def demo(data, save, depth=10, growth_rate=12, efficient=True, valid_size=5000,
          n_epochs=300, batch_size=64, seed=None):
     """
     A demo to show off training of efficient DenseNets.
